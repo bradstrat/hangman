@@ -1,4 +1,5 @@
 #Options : menu - difficulty
+
 #_ = system('cls') to clear
 import os
 from time import sleep
