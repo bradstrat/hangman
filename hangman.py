@@ -12,6 +12,9 @@ def getdifficulty():
 
 def playgame():
     #provide commetns on whats happening
+
+    #ask question to get difficulty
+    input
     
     word = wordlist.wordgiver()
 
@@ -22,24 +25,38 @@ def playgame():
     counter = 0
 
     while True:
-        letter = input('\nGuess your letter :')
+        letter = input('\nGuess your letter or type GUESS to make a guess: ')
+        #give the chance to guess the whole word
+        if letter.lower() == "guess":
+            g = input("Guess the word: ")
+            if str(g.lower()) == word:
+                print("The word was...")
+                sleep(2)
+                print(word + "!")
+                break
+            else:
+                print(g)
+                print(type(g))
+                print("NOPE!")
+                continue
         if letter in word:
             for i in range(0, len(word)):
                 if word[i] == letter:
                     lines[i] = letter
-        else:  # letter is not in the word
+        #letter is not in the word
+        else:
             counter += 1
-        # print the word with inserted letters
+        #print the word with inserted letters
         for i in lines:
             print(i, end=" ")
 
-        # check letters remained in the list
+        #check letters remained in the list
 
         cnt = "".join(lines).count('_')
 
         if cnt == 0 or counter == 6:
             break
-    # end of while loop
+    #end of while loop
 
     if counter >= 6:
         print("\n\nThe word was {}!".format(word))

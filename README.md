@@ -15,3 +15,8 @@ Finished the game; completed the def playgame()
 funcion. added more animals to the list. Plan 
 on coming out with differnt types of secret words 
 along with the current - animal list.
+
+v1.0.2
+
+Fixed small issues to improve user usability and
+added a guess word feature!
