@@ -6,16 +6,9 @@ from time import sleep
 import wordlist
 
 
-
-def getdifficulty():
-    input("Please choose difficulty: EASY, MEDIUM, or HARD")
-
 def playgame():
     #provide commetns on whats happening
 
-    #ask question to get difficulty
-    input
-    
     word = wordlist.wordgiver()
 
     lines = []
@@ -25,6 +18,7 @@ def playgame():
     counter = 0
 
     while True:
+
         letter = input('\nGuess your letter or type GUESS to make a guess: ')
         #give the chance to guess the whole word
         if letter.lower() == "guess":
@@ -35,10 +29,11 @@ def playgame():
                 print(word + "!")
                 break
             else:
-                print(g)
-                print(type(g))
                 print("NOPE!")
-                continue
+                if counter == 6:
+                    break
+                
+        #check if the guessed letter is in the word and set _ to letter
         if letter in word:
             for i in range(0, len(word)):
                 if word[i] == letter:
@@ -53,7 +48,7 @@ def playgame():
         #check letters remained in the list
 
         cnt = "".join(lines).count('_')
-
+        print("     guesses remaining: {}".format(6-(int(counter))))
         if cnt == 0 or counter == 6:
             break
     #end of while loop
@@ -61,21 +56,23 @@ def playgame():
     if counter >= 6:
         print("\n\nThe word was {}!".format(word))
         print("\n\n\n You lose.............. Better luck next time!\n")
+        input("Press any key to continue...")
     else:
         print("\n\nYes! You WON this match!\n")
+        input("Press any key to continue...")
 
 
 def loadingdots():
     os.system('cls')
     sleep(1)
     print(".")
-    sleep(1)
+    sleep(0.5)
     os.system('cls')
     print("..")
-    sleep(1)
+    sleep(0.5)
     os.system('cls')
     print("...")
-    sleep(1)
+    sleep(0.5)
     os.system('cls')
 
 
@@ -114,8 +111,6 @@ def mainmenu():
 
 while True:
     playerdesire = mainmenu()
-
-    print(playerdesire)
     
     if str(playerdesire.lower()) == "new game":
         print("\nStarting new game...\n")
@@ -125,10 +120,10 @@ while True:
         os.system('cls')
         print("\nComing Soon...\n")
         sleep(1)
-        print("Very soon..")
+        print("Very soon...\n")
         sleep(1)
-        print("like today lol")
-        input("...")
+        print(";)")
+        sleep(1)
         os.system('cls')
         
     if str(playerdesire.lower()) == "quit":
